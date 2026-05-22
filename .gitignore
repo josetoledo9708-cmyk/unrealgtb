@@ -1,0 +1,41 @@
+# Unreal Engine generated
+Binaries/
+DerivedDataCache/
+Intermediate/
+Saved/
+*.VC.db
+*.opensdf
+*.opendb
+*.sdf
+*.sln
+*.suo
+*.xcodeproj/
+*.xcworkspace/
+
+# Visual Studio
+.vs/
+*.user
+*.aps
+*.pch
+*.vspscc
+*_i.c
+*_p.c
+*.ncb
+*.suo
+*.tlb
+*.tlh
+*.bak
+*.[Cc]ache
+*.ilk
+*.log
+*.lib
+*.sbr
+
+# Build artifacts
+*.exe
+*.dll
+*.pdb
+
+# OS
+.DS_Store
+Thumbs.db
