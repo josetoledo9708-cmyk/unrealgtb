@@ -50,7 +50,7 @@ def create_wbp(name, package_path, parent_class):
         log(f"WBP {asset_path} already exists; reusing.")
         return existing
     factory = unreal.WidgetBlueprintFactory()
-    factory.parent_class = parent_class
+    factory.set_editor_property('ParentClass', parent_class)
     wbp = asset_tools.create_asset(name, package_path, None, factory)
     log(f"Created WBP {asset_path}")
     return wbp
