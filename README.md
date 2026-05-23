@@ -1,6 +1,6 @@
 # The Great Book — Unreal Engine port
 
-Port del TCG bíblico **The Great Book** (originalmente Godot 4) a Unreal Engine 5.4.
+Port del TCG bíblico **The Great Book** (originalmente Godot 4) a Unreal Engine 5.7.
 
 Proyecto hermano de [`../TheGreatBook`](../TheGreatBook).
 
@@ -17,7 +17,7 @@ Proyecto hermano de [`../TheGreatBook`](../TheGreatBook).
 
 ## Pre-requisitos
 
-- Unreal Engine 5.4 o superior instalado
+- Unreal Engine 5.7 o superior instalado
 - Visual Studio 2022 con workload "Game development with C++"
 - Windows 10/11
 

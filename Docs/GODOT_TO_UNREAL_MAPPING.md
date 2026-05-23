@@ -1,4 +1,4 @@
-# Godot 4 → Unreal 5.4 mapping — The Great Book
+# Godot 4 → Unreal 5.7 mapping — The Great Book
 
 Guía de traducción del proyecto Godot original al port Unreal. Se actualiza a medida que cada sistema se porta.
 
@@ -6,7 +6,8 @@ Guía de traducción del proyecto Godot original al port Unreal. Se actualiza a 
 
 | Subsistema | Godot (origen) | Unreal (destino) | Status |
 |---|---|---|---|
-| Datos de carta | `scripts/CardData.gd` const dict | `Source/.../CardData.h` USTRUCT + DataTable | Skeleton |
+| Datos de carta | `scripts/CardData.gd` const dict | `Source/.../CardData.h` USTRUCT + `Content/Data/DT_Cards.csv` (89 cartas) | **CSV listo, importar en Editor** |
+| Mazos preset | `scripts/CardData.gd::PRESET_DECKS` | `PresetDeckData.h` USTRUCT + `DT_PresetDecks.csv` (3 mazos) | **CSV listo, importar en Editor** |
 | Estado de partida | `scripts/GameState.gd` autoload | `ATheGreatBookGameState` (replicated) | Skeleton |
 | Lógica autoritativa | `scripts/GameManager.gd` | `ATheGreatBookGameMode` (server-only) | Skeleton |
 | Input jugador | `Card.gd::_gui_input` + GameManager handlers | `ATheGreatBookPlayerController` + Enhanced Input | Skeleton |

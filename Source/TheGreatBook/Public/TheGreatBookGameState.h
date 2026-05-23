@@ -17,7 +17,7 @@ enum class EGamePhase : uint8
 
 /** Modo de selección activo */
 UENUM(BlueprintType)
-enum class ESelectionMode : uint8
+enum class EGBSelectionMode : uint8
 {
 	NONE          UMETA(DisplayName = "Ninguno"),
 	DISCARD       UMETA(DisplayName = "Descarte"),
@@ -95,7 +95,7 @@ public:
 	EGamePhase Phase = EGamePhase::PREPARACION;
 
 	UPROPERTY(Replicated, BlueprintReadOnly, Category = "Turn")
-	ESelectionMode SelectionMode = ESelectionMode::NONE;
+	EGBSelectionMode SelectionMode = EGBSelectionMode::NONE;
 
 	// ── Tutorial ───────────────────────────────────────────────────
 	UPROPERTY(Replicated, BlueprintReadOnly, Category = "Tutorial")

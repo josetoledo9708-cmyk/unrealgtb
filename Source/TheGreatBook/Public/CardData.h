@@ -66,6 +66,14 @@ struct FCardDataRow : public FTableRowBase
 
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Card")
 	TSoftObjectPtr<UTexture2D> Art;
+
+	/** Solo HISTORIA: ids de las cartas que componen la historia */
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Card|Historia")
+	TArray<FString> Pieces;
+
+	/** Solo HISTORIA: descripción de composición ("2 TIERRAs + 3 SER") */
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Card|Historia")
+	FString Composition;
 };
 
 /** Instancia de una carta en juego (con inst_id único y estado runtime).
