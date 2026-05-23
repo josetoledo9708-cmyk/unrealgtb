@@ -33,6 +33,14 @@ public:
 	UPROPERTY(EditDefaultsOnly, Category = "Input")
 	TObjectPtr<UInputAction> CancelAction;
 
+	/** Widget UMG de menú principal — asignar BP_WBP_MainMenu en BP del PC. */
+	UPROPERTY(EditDefaultsOnly, Category = "UI")
+	TSubclassOf<class UMainMenuWidget> MainMenuWidgetClass;
+
+	/** Instancia creada del menú en NetMode local. */
+	UPROPERTY()
+	TObjectPtr<class UMainMenuWidget> MainMenuWidgetInstance;
+
 	/** Pide al server jugar una carta */
 	UFUNCTION(Server, Reliable, BlueprintCallable, Category = "Game")
 	void ServerPlayCard(const FString& InstanceId);

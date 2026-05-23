@@ -1,5 +1,7 @@
 #include "TheGreatBookPlayerController.h"
 #include "TheGreatBookGameMode.h"
+#include "UI/MainMenuWidget.h"
+#include "Blueprint/UserWidget.h"
 #include "EnhancedInputComponent.h"
 #include "EnhancedInputSubsystems.h"
 #include "InputMappingContext.h"
@@ -26,6 +28,20 @@ void ATheGreatBookPlayerController::BeginPlay()
 			{
 				Subsystem->AddMappingContext(InputMappingContext, 0);
 			}
+		}
+	}
+
+	// Mostrar menú principal solo en cliente local
+	if (IsLocalController() && MainMenuWidgetClass)
+	{
+		MainMenuWidgetInstance = CreateWidget<UMainMenuWidget>(this, MainMenuWidgetClass);
+		if (MainMenuWidgetInstance)
+		{
+			MainMenuWidgetInstance->AddToViewport();
+			SetShowMouseCursor(true);
+			FInputModeUIOnly Mode;
+			Mode.SetWidgetToFocus(MainMenuWidgetInstance->TakeWidget());
+			SetInputMode(Mode);
 		}
 	}
 }

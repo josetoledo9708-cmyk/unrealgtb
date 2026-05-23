@@ -8,6 +8,8 @@ Guía de traducción del proyecto Godot original al port Unreal. Se actualiza a 
 |---|---|---|---|
 | Datos de carta | `scripts/CardData.gd` const dict | `Source/.../CardData.h` USTRUCT + `Content/Data/DT_Cards.csv` (89 cartas) | **CSV listo, importar en Editor** |
 | Mazos preset | `scripts/CardData.gd::PRESET_DECKS` | `PresetDeckData.h` USTRUCT + `DT_PresetDecks.csv` (3 mazos) | **CSV listo, importar en Editor** |
+| Menú principal | `StartMenu` CanvasLayer en Main.tscn | `UMainMenuWidget` + WBP_MainMenu (manual en Editor) | **C++ base listo, crear WBP** |
+| Selección de mazo | `DeckSelection` CanvasLayer | `UDeckSelectionWidget` + WBP_DeckSelection (manual en Editor) | **C++ base listo, crear WBP** |
 | Estado de partida | `scripts/GameState.gd` autoload | `ATheGreatBookGameState` (replicated) | Skeleton |
 | Lógica autoritativa | `scripts/GameManager.gd` | `ATheGreatBookGameMode` (server-only) | Skeleton |
 | Input jugador | `Card.gd::_gui_input` + GameManager handlers | `ATheGreatBookPlayerController` + Enhanced Input | Skeleton |

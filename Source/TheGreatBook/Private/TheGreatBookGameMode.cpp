@@ -1,6 +1,7 @@
 #include "TheGreatBookGameMode.h"
 #include "TheGreatBookGameState.h"
 #include "TheGreatBookPlayerController.h"
+#include "PresetDeckData.h"
 #include "Engine/DataTable.h"
 
 ATheGreatBookGameMode::ATheGreatBookGameMode()
@@ -63,4 +64,30 @@ const FCardDataRow* ATheGreatBookGameMode::GetCardRow(const FString& CardId) con
 {
 	if (!CardsTable) return nullptr;
 	return CardsTable->FindRow<FCardDataRow>(FName(*CardId), TEXT("GetCardRow"));
+}
+
+bool ATheGreatBookGameMode::GetPresetDeckById(const FString& DeckId, FPresetDeckRow& OutDeck) const
+{
+	if (!PresetDecksTable) return false;
+	const FPresetDeckRow* Row = PresetDecksTable->FindRow<FPresetDeckRow>(FName(*DeckId), TEXT("GetPresetDeckById"));
+	if (!Row) return false;
+	OutDeck = *Row;
+	return true;
+}
+
+TArray<FPresetDeckRow> ATheGreatBookGameMode::GetAllPresetDecks() const
+{
+	TArray<FPresetDeckRow> Result;
+	if (!PresetDecksTable) return Result;
+
+	TArray<FName> RowNames = PresetDecksTable->GetRowNames();
+	Result.Reserve(RowNames.Num());
+	for (const FName& RowName : RowNames)
+	{
+		if (const FPresetDeckRow* Row = PresetDecksTable->FindRow<FPresetDeckRow>(RowName, TEXT("GetAllPresetDecks")))
+		{
+			Result.Add(*Row);
+		}
+	}
+	return Result;
 }

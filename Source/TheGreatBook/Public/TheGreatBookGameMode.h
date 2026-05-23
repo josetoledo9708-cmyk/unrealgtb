@@ -34,6 +34,18 @@ public:
 	UPROPERTY(EditDefaultsOnly, Category = "Cards")
 	TObjectPtr<UDataTable> CardsTable;
 
+	/** DataTable con los mazos preset (FPresetDeckRow). Asignado en Blueprint */
+	UPROPERTY(EditDefaultsOnly, Category = "Cards")
+	TObjectPtr<UDataTable> PresetDecksTable;
+
+	/** Devuelve la fila de mazo por su id (h1, h3, h7). Nullptr si no existe. */
+	UFUNCTION(BlueprintCallable, Category = "Cards")
+	bool GetPresetDeckById(const FString& DeckId, struct FPresetDeckRow& OutDeck) const;
+
+	/** Devuelve todos los preset decks como array (para llenar UI de selección). */
+	UFUNCTION(BlueprintCallable, Category = "Cards")
+	TArray<FPresetDeckRow> GetAllPresetDecks() const;
+
 	/** Genera un inst_id único monotónico (espejo de _uid_counter de GameManager.gd) */
 	FString GenerateInstanceId();
 
