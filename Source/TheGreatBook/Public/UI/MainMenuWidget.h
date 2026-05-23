@@ -28,17 +28,22 @@ public:
 	virtual void NativeConstruct() override;
 
 protected:
-	UPROPERTY(meta = (BindWidget))
+	// Widgets construidos en NativeConstruct (no BindWidget). Permite usar
+	// el WBP sin layout en Designer — C++ construye todo el árbol.
+	UPROPERTY()
 	TObjectPtr<UButton> VsAIButton;
 
-	UPROPERTY(meta = (BindWidget))
+	UPROPERTY()
 	TObjectPtr<UButton> MultiplayerButton;
 
-	UPROPERTY(meta = (BindWidget))
+	UPROPERTY()
 	TObjectPtr<UButton> DeckBuilderButton;
 
-	UPROPERTY(meta = (BindWidget))
+	UPROPERTY()
 	TObjectPtr<UButton> QuitButton;
+
+	/** Construye el árbol de widgets (root CanvasPanel + VBox + 4 buttons) */
+	void BuildLayout();
 
 	UFUNCTION()
 	void OnVsAIClicked();

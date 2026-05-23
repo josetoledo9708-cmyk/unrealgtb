@@ -37,11 +37,15 @@ public:
 	FOnDeckChosen OnDeckChosen;
 
 protected:
-	UPROPERTY(meta = (BindWidget))
+	// Widgets construidos en C++ (no BindWidget). WBP queda vacío.
+	UPROPERTY()
 	TObjectPtr<UHorizontalBox> DecksContainer;
 
-	UPROPERTY(meta = (BindWidget))
+	UPROPERTY()
 	TObjectPtr<UButton> BackButton;
+
+	/** Construye CanvasPanel root + Title + DecksContainer + BackButton */
+	void BuildLayout();
 
 	/** Llamar para regenerar la lista de mazos desde el GameMode. */
 	UFUNCTION(BlueprintCallable, Category = "UI")
