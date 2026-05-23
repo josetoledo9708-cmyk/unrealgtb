@@ -97,10 +97,10 @@ void UDeckSelectionWidget::RefreshDeckList()
 			// Fallback: si el BP no implementa CreateDeckButton, construir un
 			// botón mínimo en C++ con el nombre del mazo.
 			UButton* Btn = WidgetTree->ConstructWidget<UButton>(UButton::StaticClass());
-			UHorizontalBoxSlot* Slot = DecksContainer->AddChildToHorizontalBox(Btn);
-			if (Slot)
+			UHorizontalBoxSlot* HBoxItemSlot = DecksContainer->AddChildToHorizontalBox(Btn);
+			if (HBoxItemSlot)
 			{
-				Slot->SetPadding(FMargin(8.0f));
+				HBoxItemSlot->SetPadding(FMargin(8.0f));
 			}
 			UTextBlock* Label = WidgetTree->ConstructWidget<UTextBlock>(UTextBlock::StaticClass());
 			Label->SetText(Deck.DisplayName);
