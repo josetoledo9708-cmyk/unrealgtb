@@ -63,7 +63,8 @@ def create_bp(name, package_path, parent_class):
         log(f"BP {asset_path} already exists; reusing.")
         return existing
     factory = unreal.BlueprintFactory()
-    factory.parent_class = parent_class
+    # UE 5.7: BlueprintFactory.ParentClass via set_editor_property
+    factory.set_editor_property('ParentClass', parent_class)
     bp = asset_tools.create_asset(name, package_path, None, factory)
     log(f"Created BP {asset_path}")
     return bp
