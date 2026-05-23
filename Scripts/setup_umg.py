@@ -88,7 +88,7 @@ def find_or_create_widget(tree, widget_cls, name, parent=None, set_as_variable=T
 
 # ── layout builders ───────────────────────────────────────────────────────────
 def build_main_menu_layout(wbp_main):
-    tree = wbp_main.widget_tree
+    tree = wbp_main.get_editor_property('WidgetTree')
 
     # Root: CanvasPanel
     root = tree.root_widget
@@ -135,7 +135,7 @@ def build_main_menu_layout(wbp_main):
 
 
 def build_deck_selection_layout(wbp_deck):
-    tree = wbp_deck.widget_tree
+    tree = wbp_deck.get_editor_property('WidgetTree')
 
     root = tree.root_widget
     if root is None or not isinstance(root, unreal.CanvasPanel):
