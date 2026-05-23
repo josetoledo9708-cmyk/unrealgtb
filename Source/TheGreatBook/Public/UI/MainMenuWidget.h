@@ -19,7 +19,7 @@ class UButton;
  *   - QuitButton
  * que el meta BindWidget enlaza automáticamente.
  */
-UCLASS(Abstract)
+UCLASS()
 class THEGREATBOOK_API UMainMenuWidget : public UUserWidget
 {
 	GENERATED_BODY()

@@ -24,7 +24,7 @@ DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(FOnDeckChosen, const FString&, DeckI
  *   - DeckButtonTemplate: TSubclassOf<UUserWidget> opcional para custom layout
  *   - BackButton (UButton)
  */
-UCLASS(Abstract)
+UCLASS()
 class THEGREATBOOK_API UDeckSelectionWidget : public UUserWidget
 {
 	GENERATED_BODY()

@@ -31,17 +31,29 @@ void ATheGreatBookPlayerController::BeginPlay()
 		}
 	}
 
-	// Mostrar menú principal solo en cliente local
-	if (IsLocalController() && MainMenuWidgetClass)
+	// Mostrar menú principal solo en cliente local. Si la propiedad
+	// MainMenuWidgetClass no se asignó en BP, usar la clase C++ base.
+	if (IsLocalController())
 	{
-		MainMenuWidgetInstance = CreateWidget<UMainMenuWidget>(this, MainMenuWidgetClass);
+		TSubclassOf<UMainMenuWidget> ClassToUse = MainMenuWidgetClass
+			? MainMenuWidgetClass
+			: TSubclassOf<UMainMenuWidget>(UMainMenuWidget::StaticClass());
+		UE_LOG(LogTemp, Log, TEXT("[PC] BeginPlay creating menu. ClassToUse=%s"),
+			ClassToUse ? *ClassToUse->GetName() : TEXT("NULL"));
+		MainMenuWidgetInstance = CreateWidget<UMainMenuWidget>(this, ClassToUse);
 		if (MainMenuWidgetInstance)
 		{
-			MainMenuWidgetInstance->AddToViewport();
+			MainMenuWidgetInstance->AddToViewport(100);
 			SetShowMouseCursor(true);
-			FInputModeUIOnly Mode;
-			Mode.SetWidgetToFocus(MainMenuWidgetInstance->TakeWidget());
+			FInputModeGameAndUI Mode;
+			Mode.SetLockMouseToViewportBehavior(EMouseLockMode::DoNotLock);
+			Mode.SetHideCursorDuringCapture(false);
 			SetInputMode(Mode);
+			UE_LOG(LogTemp, Log, TEXT("[PC] Menu instance added to viewport."));
+		}
+		else
+		{
+			UE_LOG(LogTemp, Error, TEXT("[PC] CreateWidget returned NULL."));
 		}
 	}
 }
